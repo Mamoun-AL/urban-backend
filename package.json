@@ -20,4 +20,8 @@
     "path": "^0.12.7",
     "swiper": "^11.1.11"
   }
+   "scripts": {
+    "build": "babel src -d lib",
+    "test": "dev"
+  }
 }
