@@ -23,7 +23,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: '*',
+  origin: 'https://urban-frontend.onrender.com',
   credentials: true
 }));
 
