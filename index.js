@@ -12,6 +12,10 @@ const fs = require('fs').promises;
 const neighborhoods = require('./data/neighborhoods'); // Import data from the data directory
 dotenv.config();
 
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 // Models
 const User = require('./Models/User');
