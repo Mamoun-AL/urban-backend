@@ -38,10 +38,10 @@ router.post('/login', async (req, res) => {
     });
 
     const cookieOptions = {
-      httpOnly: true,  // Prevents JavaScript access to cookies
-      secure: process.env.NODE_ENV === 'production', // Only set the secure flag in production with HTTPS
-      sameSite: 'Strict', // Adjust based on your needs
-      maxAge: 3600000, // 1 hour
+    httpOnly: true,
+  secure: process.env.NODE_ENV === 'production', // secure only in production
+  sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', // None in production
+  maxAge: 3600000, // 1 hour
     };
 
     // Log the cookie options for debugging
