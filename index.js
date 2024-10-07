@@ -19,7 +19,12 @@ const Listing = require('./Models/Listing'); // Ensure this path is correct
 const app = express();
 const port = process.env.PORT || 3000;
 // Middleware
+app.use(express.static(path.join(__dirname, 'dist')));
 
+// Catch-all route to serve index.html for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 
 app.use(express.json());
