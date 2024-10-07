@@ -38,6 +38,7 @@ router.post('/login', async (req, res) => {
     });
 
     // Set token as a cookie
+    console.log("Token set:", token); // Add this line for debugging
     res.cookie('token', token, {
       httpOnly: true,  // Prevents JavaScript access to cookies
       secure: process.env.NODE_ENV === 'production', // Only set the secure flag in production with HTTPS
