@@ -42,6 +42,7 @@ router.post('/login', async (req, res) => {
   secure: process.env.NODE_ENV === 'production', // secure only in production
   sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', // None in production
   maxAge: 3600000, // 1 hour
+        domain: 'urban-frontend-2.onrender.com',
     };
 
     // Log the cookie options for debugging
@@ -61,6 +62,7 @@ router.post('/logout', (req, res) => {
     secure: process.env.NODE_ENV === 'production', // Only set the secure flag in production with HTTPS
     sameSite: 'Strict', // Adjust based on your needs
     expires: new Date(0), // Set the expiration date to the past
+    
   }).json({ message: 'Logout successful' });
 });
 
