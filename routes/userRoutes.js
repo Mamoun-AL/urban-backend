@@ -37,14 +37,18 @@ router.post('/login', async (req, res) => {
       expiresIn: '1h',
     });
 
-    // Set token as a cookie
-    console.log("Token set:", token); // Add this line for debugging
-    res.cookie('token', token, {
+    const cookieOptions = {
       httpOnly: true,  // Prevents JavaScript access to cookies
       secure: process.env.NODE_ENV === 'production', // Only set the secure flag in production with HTTPS
       sameSite: 'Strict', // Adjust based on your needs
-      maxAge: 36000000, // 1 hour
-    }).json({ message: 'Login successful' });
+      maxAge: 3600000, // 1 hour
+    };
+
+    // Log the cookie options for debugging
+    console.log("Setting cookie with options:", cookieOptions);
+
+    // Set token as a cookie
+    res.cookie('token', token, cookieOptions).json({ message: 'Login successful' });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
