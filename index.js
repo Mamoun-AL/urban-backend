@@ -12,11 +12,6 @@ const fs = require('fs').promises;
 const neighborhoods = require('./data/neighborhoods'); // Import data from the data directory
 dotenv.config();
 
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
 // Models
 const User = require('./Models/User');
 const Listing = require('./Models/Listing'); // Ensure this path is correct
@@ -24,6 +19,12 @@ const Listing = require('./Models/Listing'); // Ensure this path is correct
 const app = express();
 const port = process.env.PORT || 3000;
 // Middleware
+
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
