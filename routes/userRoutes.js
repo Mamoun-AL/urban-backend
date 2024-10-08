@@ -43,6 +43,7 @@ router.post('/login', async (req, res) => {
   sameSite: 'None', // None in production
   maxAge: 3600000, // 1 hour
         domain: 'urban-frontend-2.onrender.com',
+      signed:true
     };
 
     // Log the cookie options for debugging
