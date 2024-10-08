@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
     const cookieOptions = {
     httpOnly: true,
   secure: process.env.NODE_ENV === 'production', // secure only in production
-  sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', // None in production
+  sameSite: 'None', // None in production
   maxAge: 3600000, // 1 hour
         domain: 'urban-frontend-2.onrender.com',
     };
